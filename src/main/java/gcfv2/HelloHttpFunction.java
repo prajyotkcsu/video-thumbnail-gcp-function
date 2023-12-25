@@ -9,7 +9,7 @@ import com.google.cloud.functions.HttpResponse;
 public class HelloHttpFunction implements HttpFunction {
   public void service(final HttpRequest request, final HttpResponse response) throws Exception {
     final BufferedWriter writer = response.getWriter();
-    System.out.println("******Webhook triggered*****");
+    System.out.println("******Webhook triggered-v2*****");
     writer.write("Hello world!");
   }
 }
