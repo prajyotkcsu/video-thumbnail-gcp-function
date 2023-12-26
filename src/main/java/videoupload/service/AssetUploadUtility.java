@@ -1,4 +1,4 @@
-package gcfv2;
+package videoupload.service;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,7 +8,7 @@ import java.net.URL;
 
 // ...
 
-public class AssetUploadController {
+public class AssetUploadUtility {
 
     public String fetchDataFromUrl(String url) throws IOException {
         HttpURLConnection connection = null;

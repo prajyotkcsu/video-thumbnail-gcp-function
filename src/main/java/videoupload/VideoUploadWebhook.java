@@ -1,8 +1,7 @@
-package gcfv2;
+package videoupload;
 
 import java.io.BufferedWriter;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.cloud.functions.HttpFunction;
 import com.google.cloud.functions.HttpRequest;
@@ -10,22 +9,21 @@ import com.google.cloud.functions.HttpResponse;
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.*;
-import com.mongodb.client.model.Projections;
-import gcfv2.model.AssetDetails;
-import gcfv2.model.PlaybackDetails;
-import gcfv2.model.UploadDetails;
-import gcfv2.video.VideoMetadata;
+import videoupload.model.AssetDetails;
+import videoupload.model.PlaybackDetails;
+import videoupload.model.UploadDetails;
+import videoupload.service.AssetUploadUtility;
+import videoupload.model.VideoMetadata;
 import org.bson.Document;
 import org.bson.codecs.configuration.CodecRegistries;
 import org.bson.codecs.configuration.CodecRegistry;
 import org.bson.codecs.pojo.PojoCodecProvider;
 
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicReference;
 import java.util.logging.Logger;
 
-public class HelloHttpFunction implements HttpFunction {
-  private static final Logger log = Logger.getLogger(HelloHttpFunction.class.getName());
+public class VideoUploadWebhook implements HttpFunction {
+  private static final Logger log = Logger.getLogger(VideoUploadWebhook.class.getName());
 
   public void service(final HttpRequest request, final HttpResponse response) throws Exception {
     final BufferedWriter writer = response.getWriter();
@@ -66,7 +64,7 @@ public class HelloHttpFunction implements HttpFunction {
     if (eventType.equals("asset.ready")) {
       String assetId = objectMapper.readTree(requestBody).get("payload").get("id").asText();
       log.info("assetId: " + assetId);
-      Document query = new Document("assetId", "a1188fc2-4bbf-45de-8050-0e5ef405c7e1");
+      Document query = new Document("assetId", "a1188fc2-4bbf-45de-8050-0e5ef405c7e1"); //TODO: remove this
       FindIterable<Document> docs = collection.find(query);
       log.info("Doc" + docs);
       String playbackId = null;
@@ -76,7 +74,7 @@ public class HelloHttpFunction implements HttpFunction {
         log.info("******playbackId******" + playbackId);
         assert asset != null;
         String playbackUrl = "https://livepeer.studio/api/playback/" + playbackId;
-        AssetUploadController assetUploadController = new AssetUploadController();
+        AssetUploadUtility assetUploadController = new AssetUploadUtility();
         String output = assetUploadController.fetchDataFromUrl(playbackUrl);
         log.info("output: " + output);
         VideoMetadata videoMetadata = objectMapper.readValue(output, VideoMetadata.class);

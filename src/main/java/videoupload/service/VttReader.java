@@ -1,6 +1,6 @@
-package gcfv2.service;
+package videoupload.service;
 
-import gcfv2.model.Thumbnail;
+import videoupload.model.Thumbnail;
 
 
 

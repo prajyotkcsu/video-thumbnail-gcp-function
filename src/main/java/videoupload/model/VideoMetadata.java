@@ -1,12 +1,8 @@
-package gcfv2.video;
+package videoupload.model;
 
 
-import gcfv2.model.MP4;
-import gcfv2.model.PlaybackDetails;
-import gcfv2.model.Thumbnail;
-import gcfv2.service.VttReader;
+import videoupload.service.VttReader;
 import lombok.Data;
-import lombok.extern.slf4j.Slf4j;
 
 
 import java.io.IOException;

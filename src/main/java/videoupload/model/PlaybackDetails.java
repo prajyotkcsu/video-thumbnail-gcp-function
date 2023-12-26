@@ -1,4 +1,4 @@
-package gcfv2.model;
+package videoupload.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

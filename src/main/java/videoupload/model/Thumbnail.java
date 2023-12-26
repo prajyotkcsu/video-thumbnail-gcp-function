@@ -1,4 +1,4 @@
-package gcfv2.model;
+package videoupload.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class AssetDetails {
-    private String assetId;
-    private String playbackId;
-
+public class Thumbnail {
+    private String start;
+    private String end;
+    private String filename;
 }
