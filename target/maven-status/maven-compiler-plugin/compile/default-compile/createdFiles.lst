@@ -1,1 +1,17 @@
+gcfv2\model\MP4.class
+gcfv2\model\AssetDetails.class
+gcfv2\model\UploadDetails$UploadDetailsBuilder.class
+gcfv2\model\Thumbnail.class
+gcfv2\model\MP4$MP4Builder.class
+gcfv2\model\PlaybackDetails.class
 gcfv2\HelloHttpFunction.class
+gcfv2\model\UploadDetails.class
+gcfv2\video\Meta.class
+gcfv2\model\AssetDetails$AssetDetailsBuilder.class
+gcfv2\service\VttReader.class
+gcfv2\video\VideoMetadata.class
+gcfv2\video\Source.class
+gcfv2\AssetUploadController.class
+gcfv2\model\Thumbnail$ThumbnailBuilder.class
+gcfv2\model\PlaybackDetails$PlaybackDetailsBuilder.class
+gcfv2\MongoDBExample.class
