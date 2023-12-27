@@ -33,7 +33,10 @@ public class VideoUploadWebhook implements HttpFunction {
     String connectionStrings = Optional.ofNullable(System.getenv("CONNECTION_STRING"))
             .orElseThrow(() -> new IllegalStateException("CONNECTION_STRING environment variable not set."));
 
-    log.info("Connection s" + connectionStrings);
+    log.info("connection " + connectionStrings);
+   // String connectionString = "mongodb+srv://livepeer-webhook:yYk4b7EobdvMD3ikLQKFKbAm5XXMfdYmNj2VYMDF2RzCDifsJJEPFFFuJTEQjcZ4TPkotj9wEGjuG8jPpPYLhoGrNDrGfDL6XX@orb-user-db.bxckw.mongodb.net/?retryWrites=true&w=majority";
+
+
     CodecRegistry codecRegistry = CodecRegistries.fromRegistries(
             MongoClientSettings.getDefaultCodecRegistry(),
             CodecRegistries.fromProviders(PojoCodecProvider.builder().automatic(true).build())
@@ -46,13 +49,9 @@ public class VideoUploadWebhook implements HttpFunction {
 
     MongoClient mongoClient = MongoClients.create(settings);
 
-    String database_name = Optional.ofNullable(System.getenv("DATABASE"))
-            .orElseThrow(() -> new IllegalStateException("DATABASE environment variable not set."));
+    MongoDatabase database = mongoClient.getDatabase("orbdb");
 
-    String collection_name = Optional.ofNullable(System.getenv("COLLECTION"))
-            .orElseThrow(() -> new IllegalStateException("COLLECTION environment variable not set."));
-    MongoDatabase database = mongoClient.getDatabase(database_name);
-    MongoCollection<Document> collection = database.getCollection(collection_name);
+    MongoCollection<Document> collection = database.getCollection("upload-video");
 
     ObjectMapper objectMapper = new ObjectMapper();
     AssetDetails assetDetails = null;
