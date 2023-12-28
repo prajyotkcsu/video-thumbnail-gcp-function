@@ -34,7 +34,7 @@ public class VideoUploadWebhook implements HttpFunction {
             .orElseThrow(() -> new IllegalStateException("CONNECTION_STRING environment variable not set."));
 
     log.info("connection " + connectionStrings);
-   // String connectionString = "mongodb+srv://livepeer-webhook:yYk4b7EobdvMD3ikLQKFKbAm5XXMfdYmNj2VYMDF2RzCDifsJJEPFFFuJTEQjcZ4TPkotj9wEGjuG8jPpPYLhoGrNDrGfDL6XX@orb-user-db.bxckw.mongodb.net/?retryWrites=true&w=majority";
+    // String connectionString = "mongodb+srv://livepeer-webhook:yYk4b7EobdvMD3ikLQKFKbAm5XXMfdYmNj2VYMDF2RzCDifsJJEPFFFuJTEQjcZ4TPkotj9wEGjuG8jPpPYLhoGrNDrGfDL6XX@orb-user-db.bxckw.mongodb.net/?retryWrites=true&w=majority";
 
 
     CodecRegistry codecRegistry = CodecRegistries.fromRegistries(
